@@ -2,7 +2,6 @@ import axios from "axios";
 import { baseUrl } from "../../Utils/Utils";
 
 const register = async (user) => {
-  console.log("uset", user);
   const response = await axios.post(`${baseUrl}/signup`, user);
 
   return response.data;

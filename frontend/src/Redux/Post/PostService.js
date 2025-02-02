@@ -19,12 +19,10 @@ const getPosts = async()=>{
 }
 const likePost = async(postId)=>{
     const response = await axios.put(`${baseUrl}/like`,{postId:postId},config)
-    console.log(response);
     return response
 }
 const unLikePost = async(postId)=>{
     const response = await axios.put(`${baseUrl}/unlike`,{postId:postId},config)
-    console.log(response);
     return response
 }
 const savePost = async(post)=>{
@@ -46,7 +44,6 @@ const unSavePost = async(post)=>{
         savedId:savedPost._id
     }
     ,config)
-    console.log(response);
     return response
 }
 
@@ -70,7 +67,6 @@ const deleteComment=async(comment)=>{
 //deletepost
 const deletePost = async(postId)=>{
     const response = await axios.delete(`${baseUrl}/deletepost/${postId}`,config)
-    console.log(response);
     return response
 }
 

@@ -27,7 +27,7 @@ export const exploreSlice = createSlice({
             state.message='Success'
        })
         .addCase(getExplorePosts.rejected,(state,action)=>{
-            console.log("err", action);
+            // console.log("err", action);
             state.isLoading=false;
             state.isError=true;
             state.isSucess=false;

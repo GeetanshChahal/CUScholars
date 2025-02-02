@@ -161,7 +161,7 @@ exports.newPassword = (req, res) => {
 
       //hash password
       bcrypt.hash(newPassword, 12).then((hashedPassword) => {
-        user.password == hashedPassword;
+        user.password = hashedPassword;
         user.resetToken = undefined;
         user.expireToken = undefined;
         user.save().then((savedUser) => {

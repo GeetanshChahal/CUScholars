@@ -35,7 +35,6 @@ export default function Register() {
     },
     validationSchema: schema,
     onSubmit: async (values) => {
-      console.log(image);
       const data = new FormData();
       await data.append("file", image);
       await data.append("upload_preset", "cuscholar");

@@ -41,7 +41,7 @@ export const authSlice = createSlice({
             state.isLoading=true
         })
         .addCase(login.fulfilled,(state,action)=>{
-            console.log("action",action);
+            // console.log("action",action);
             state.isLoading = false;
             state.isError=false;
             state.isRegisterSuccess=false;
@@ -62,7 +62,7 @@ export const authSlice = createSlice({
             state.isLoading=true
         })
         .addCase(resetnewPassword.fulfilled,(state,action)=>{
-            console.log("action",action);
+            // console.log("action",action);
             state.isLoading = false;
             state.isError=false;
             state.isRegisterSuccess=false;
@@ -84,7 +84,7 @@ export const authSlice = createSlice({
             state.isLoading=true
         })
         .addCase(newPassword.fulfilled,(state,action)=>{
-            console.log("action",action);
+            // console.log("action",action);
             state.isLoading = false;
             state.isError=false;
             state.isRegisterSuccess=false;

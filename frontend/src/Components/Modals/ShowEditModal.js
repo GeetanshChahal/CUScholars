@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../../Redux/Profile/ProfileAction";
@@ -11,23 +11,59 @@ export default function ShowEditModal({ showEditmodal, setEditModal }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
 
   const currentUser = getUserfromLocalStorage;
 
+  useEffect(() => {
+    setName(currentUser?.name);
+  }, [currentUser]);
+
   const editProfile = async (e) => {
     e.preventDefault();
-    const userData = {
-      name,
-      email,
-      password,
-    };
-    await dispatch(updateUserProfile(userData));
+    if (image) {
+      const data = new FormData();
+      await data.append("file", image);
+      await data.append("upload_preset", "cuscholar");
+      await data.append("cloud_name", process.env.REACT_APP_CLOUDNAME);
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDNAME}/image/upload`,
+        {
+          method: "post",
+          body: data,
+        }
+      );
+      const cloudinaryData = await res.json();
+      if (cloudinaryData?.url) {
+        const userData = {
+          name: name != "" ? name : currentUser?.name,
+          email: currentUser?.email,
+          // password,
+          pic: cloudinaryData?.url,
+        };
 
-    //await setName('')
-    await setPassword("");
-    //await setEmail('')
-    await setEditModal(false);
-    await window.location.reload(true);
+        await dispatch(updateUserProfile(userData));
+
+        //await setName('')
+        await setPassword("");
+        //await setEmail('')
+        await setEditModal(false);
+        await window.location.reload(true);
+      }
+    } else {
+      const userData = {
+        name: name != "" ? name : currentUser?.name,
+        email: currentUser?.email,
+      };
+
+      await dispatch(updateUserProfile(userData));
+
+      //await setName('')
+      await setPassword("");
+      //await setEmail('')
+      await setEditModal(false);
+      await window.location.reload(true);
+    }
   };
 
   return (
@@ -64,20 +100,6 @@ export default function ShowEditModal({ showEditmodal, setEditModal }) {
           >
             Edit Profile
           </h2>
-
-          <div className="input-group">
-            <span className="input-group-addon">
-              <i className="icofont icofont-email"></i>
-            </span>
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="form-control"
-              autoComplete="off"
-              value={email ? email : currentUser && currentUser.email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
           <div className="input-group">
             <span className="input-group-addon">
               <i className="icofont icofont-name"></i>
@@ -87,10 +109,27 @@ export default function ShowEditModal({ showEditmodal, setEditModal }) {
               placeholder="Name"
               className="form-control"
               autoComplete="off"
-              value={name ? name : currentUser && currentUser.name}
-              onChange={(e) => setName(e.target.value)}
+              required
+              // value={name ? name : currentUser && currentUser.name}
+              defaultValue={name ? name : currentUser && currentUser.name}
+              onChange={(e) => setName(e.target.value.trim())}
             />
           </div>
+          <div className="input-group">
+            <span className="input-group-addon">
+              <i className="icofont icofont-email"></i>
+            </span>
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="form-control"
+              disabled
+              autoComplete="off"
+              value={email ? email : currentUser && currentUser.email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
           {/* <div className="input-group">
             <span className="input-group-addon">
               <i className="icofont icofont-password"></i>
@@ -108,9 +147,8 @@ export default function ShowEditModal({ showEditmodal, setEditModal }) {
             <input
               type="file"
               className="form-control"
-              required
               autoComplete="off"
-              // onChange={(e) => setImage(e.target.files[0])}
+              onChange={(e) => setImage(e.target.files[0])}
             />
           </div>
           <br />
@@ -119,6 +157,7 @@ export default function ShowEditModal({ showEditmodal, setEditModal }) {
               className="btn btn-secondary btn-md btn-block m-b-10 signupbtn"
               type="submit"
               style={{ backgroundColor: "#007a99" }}
+              disabled={!name}
             >
               Submit
             </button>
