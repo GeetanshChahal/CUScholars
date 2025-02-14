@@ -1,4 +1,7 @@
-<h1>CUScholars</h1>
+<h1 align="center">
+ CUScholars
+</h1>
+
 <p><b>Tech Stack:</b> ReactJs, Js, Jwt Token, Nodemailer, Cloudinary, Nodejs, Express, Redux..... </p>
 <p>A prototype social media application for Chitkara University students to share memories and occasions with their university mates.</p>
 
@@ -29,7 +32,7 @@
         <li><b>PASSWORD=nodemailer_password</b></li>
         <li><b>RESET=reset_port</b></li>
       </ul>
-      <li>Start the backend server using: <b>npm start</b> or <b>node index.js</b> (depending on your setup).</li>
+      <li>Start the backend server using: <b>npm start</b></li>
     </ul>
   </li>
   <li>Now you are ready to lit the fire!🔥</li>
@@ -41,3 +44,14 @@
 <br>
 <h2>Signup Page</h2>
 <img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739114416/Screenshot_2025-02-09_204926_zzdiiv.png" height="350px" width="100%">
+<h2>Home Page</h2>
+<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514605/Screenshot_2025-02-14_100029_pet2pw.png" height="500px" width="90%">
+<h2>Create Post Page</h2>
+<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514604/Screenshot_2025-02-14_094334_lensol.png" height="350px" width="100%">
+<h2>Profile Page</h2>
+<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514605/Screenshot_2025-02-14_101355_tixut5.png" height="350px" width="100%">
+<h2>Edit Profile Modal</h2>
+<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514605/Screenshot_2025-02-14_094658_dl5zco.png" height="350px" width="100%">
+<h2 align="center">
+  <strong>────── Thanks, Feel free to connect!! ──────</strong>
+</h2>
