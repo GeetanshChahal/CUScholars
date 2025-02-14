@@ -45,7 +45,7 @@
 <h2>Signup Page</h2>
 <img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739114416/Screenshot_2025-02-09_204926_zzdiiv.png" height="350px" width="100%">
 <h2>Home Page</h2>
-<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514605/Screenshot_2025-02-14_100029_pet2pw.png" height="500px" width="90%">
+<img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514605/Screenshot_2025-02-14_100029_pet2pw.png" height="500px" width="100%">
 <h2>Create Post Page</h2>
 <img src="https://res.cloudinary.com/dsvzmsdrk/image/upload/v1739514604/Screenshot_2025-02-14_094334_lensol.png" height="350px" width="100%">
 <h2>Profile Page</h2>
